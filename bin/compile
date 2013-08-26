@@ -63,7 +63,13 @@ mv bin/composer.phar bin/composer
 if [ -f $BUILD_DIR/www/composer.json ]; then
   echo "Installing Composer dependencies"
   cd $BUILD_DIR/www
-  $BUILD_DIR/bin/php $BUILD_DIR/bin/composer install --prefer-dist
+  $BUILD_DIR/bin/php $BUILD_DIR/bin/composer install --prefer-dist --no-dev --no-scripts
+  echo "Generating key file"
+  $BUILD_DIR/bin/php artisan key:generate
+  echo "Clearing old compiled"
+  $BUILD_DIR/bin/php artisan clear-compiled
+  echo "Optimizing..."
+  $BUILD_DIR/bin/php artisan optimize
   cd $BUILD_DIR
 fi
 
