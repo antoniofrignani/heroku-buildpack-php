@@ -20,6 +20,7 @@ LP_DIR=`cd $(dirname $0); cd ..; pwd`
 # include .files when moving things around
 shopt -s dotglob
 
+echo "Bin dir is $BIN_DIR"
 echo "Build dir is $BUILD_DIR"
 cd $BUILD_DIR
 
